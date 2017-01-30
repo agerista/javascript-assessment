@@ -210,36 +210,28 @@
     
     
     var numberToGuess = Math.floor(Math.random()*101)
-    console.log(numberToGuess)
+    console.log(numberToGuess);
+
     
     $("#try-this-number").click(function(event) {event.preventDefault();})
-    
+    console.log(numberInput)
 
-    if (Number(numberInput.value) == 0) {
-      var newText = $("<p>Please guess a number between 1 and 100</p>").appendTo("#number-guessing-msg")
-    }
+        if (Number(numberInput.value) == 0) {
+        var newText = $("<p>Please guess a number between 1 and 100</p>").appendTo("#number-guessing-msg")
+        }
 
-    else if (Number(numberInput.value) > numberToGuess) {
+        else if (Number(numberInput.value) > numberToGuess) {
+          newText.text("You guessed too high!")
+        }
 
-      console.log(Number(numberInput.value))
-      newText.text("You guessed too high!")
-    }
+        else if (Number(numberInput.value) < numberToGuess) {
+          newText.text("You guessed too low!")
+        }
 
-    else if (Number(numberInput.value) < numberToGuess) {
-
-      console.log(Number(numberInput.value))
-      newText.text("You guessed too low!")
-    }
-
-    else if (Number(numberInput.value) === numberToGuess) {
-
-      console.log(Number(numberInput.value))
-      newText.text("Congratulations! You guessed it!")
+        else if (Number(numberInput.value) === numberToGuess) {
+          newText.text("Congratulations! You guessed it!")
+          $(playButton).prop("disabled",false)
     };
-
-
-
-
   }
 
   playButton.addEventListener("click", numberGuessingGame);
